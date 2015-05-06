@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>uk.ac.ebi.ddi.maven</groupId>
+    <artifactId>ddi-base-master</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>DDI master pom file</name>
+    <description>Parent pom DDI project</description>
+
+    <developers>
+        <developer>
+            <id>ypriverol</id>
+            <name>Yasset Perez-Riverol</name>
+            <email>yperez@ebi.ac.uk</email>
+            <roles>
+                <role>Author</role>
+            </roles>
+            <organization>http://www.ebi.ac.uk/ddi</organization>
+        </developer>
+    </developers>
+
+    <properties>
+        <!-- Project defaults -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
+        <!--&lt;!&ndash; Java &ndash;&gt;-->
+        <!--<java.validation.api.version>1.0.0.GA</java.validation.api.version>-->
+        <!--<java.mail.version>1.4.4</java.mail.version>-->
+
+        <!-- Spring -->
+        <spring.version>4.0.3.RELEASE</spring.version>
+        <spring.security.version>3.2.4.RELEASE</spring.security.version>
+        <spring.data.mongo.version>1.7.0.RELEASE</spring.data.mongo.version>
+        <spring.rmqp.version>1.0.0.RELEASE</spring.rmqp.version>
+        <spring.orm.version>4.1.6.RELEASE</spring.orm.version>
+        <spring.social.twitter>1.0.5.RELEASE</spring.social.twitter>
+
+        <!-- Web -->
+        <servlet.version>2.5</servlet.version>
+        <jsp.version>2.1</jsp.version>
+        <jstl.version>1.2</jstl.version>
+        <apache.tiles.version>2.2.2</apache.tiles.version>
+
+        <!-- DB -->
+        <mongo.java.driver.version>3.0.0</mongo.java.driver.version>
+
+
+        <!-- Commons -->
+        <commons.dbcp.version>1.2.2</commons.dbcp.version>
+        <commons.lang.version>2.6</commons.lang.version>
+        <commons.io.version>1.3.2</commons.io.version>
+        <commons.httpclient.version>3.1</commons.httpclient.version>
+        <commons.fileupload.version>1.2</commons.fileupload.version>
+        <java.validation.api.version>1.1.0.Final</java.validation.api.version>
+
+        <!-- Misc -->
+        <solrj.version>4.1.0</solrj.version>
+        <cglib.version>2.2.2</cglib.version>
+        <jackson.version>1.9.9</jackson.version>
+        <aspectj.version>1.6.9</aspectj.version>
+
+        <!-- Testing -->
+        <junit.version>4.10</junit.version>
+        <hamcrest.version>1.3</hamcrest.version>
+        <mockito.version>1.9.5</mockito.version>
+
+        <!-- Logging -->
+        <slf4j.version>1.6.4</slf4j.version>
+        <log4j.version>1.2.14</log4j.version>
+        <slf4j-log4j12.version>1.7.12</slf4j-log4j12.version>
+        <logback.version>1.0.7</logback.version>
+
+        <!-- Maven -->
+        <maven.resources.plugin.version>2.5</maven.resources.plugin.version>
+        <maven.jar.plugin>2.3.2</maven.jar.plugin>
+        <maven.compiler.plugin>2.5.1</maven.compiler.plugin>
+        <maven.source.plugin>2.1.2</maven.source.plugin>
+        <maven.javadoc.plugin>2.8.1</maven.javadoc.plugin>
+        <maven.war.plugin>2.1.1</maven.war.plugin>
+        <maven.surefire.plugin>2.12</maven.surefire.plugin>
+        <maven.jetty.plugin>6.1.10</maven.jetty.plugin>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <!-- Exclude Commons Logging in favor of SLF4j -->
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.orm.version}</version>
+            </dependency>
+            <!-- Spring Data MongoDB -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb</artifactId>
+                <version>${spring.data.mongo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>${mongo.java.driver.version}</version>
+                <type>jar</type>
+            </dependency>
+
+            <!-- Spring RabbitMQ -->
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-rabbit</artifactId>
+                <version>${spring.rmqp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Spring security -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+
+            <!--Spring social -->
+            <dependency>
+                <groupId>org.springframework.social</groupId>
+                <artifactId>spring-social-twitter</artifactId>
+                <version>${spring.social.twitter}</version>
+            </dependency>
+
+            <!-- Servlet -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>${jsp.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${jstl.version}</version>
+            </dependency>
+
+            <!-- Apache tiles -->
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-jsp</artifactId>
+                <version>${apache.tiles.version}</version>
+            </dependency>
+
+            <!-- hibernate -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-annotations</artifactId>
+                <version>${hibernate.annotation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
+            </dependency>
+
+            <!-- java validator -->
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${java.validation.api.version}</version>
+            </dependency>
+
+            <!--apache commons-->
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${commons.dbcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons.lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${commons.httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons.fileupload.version}</version>
+            </dependency>
+
+            <!-- CGLIB2 -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+
+            <!-- jackson for json  -->
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${jackson.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- AspectJ -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+
+            <!-- database driver-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oracle</groupId>
+                <artifactId>oracle-thin</artifactId>
+                <version>${oracle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>${hsql.version}</version>
+            </dependency>
+
+            <!-- unit test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit-dep</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hamcrest</groupId>
+                        <artifactId>hamcrest-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-library</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j-log4j12.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven.jar.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven.source.plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-source</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven.javadoc.plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven.war.plugin}</version>
+                </plugin>
+                <!--unit tests-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.plugin}</version>
+                    <configuration>
+                        <parallel>methods</parallel>
+                        <threadCount>10</threadCount>
+                        <!-- Show the test errors on console -->
+                        <useFile>false</useFile>
+                        <printSummary>false</printSummary>
+                        <includes>
+                            <include>**/*Tests.java</include>
+                            <include>**/*Test.java</include>
+                        </includes>
+                        <excludes>
+                            <exclude>**/Abstract*.java</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>maven-jetty-plugin</artifactId>
+                    <version>${maven.jetty.plugin}</version>
+                    <configuration>
+                        <webAppConfig>
+                            <contextPath>/${project.name}</contextPath>
+                        </webAppConfig>
+                        <!--
+                            "stopPort" - Port number to receive a stop command and shutdown - use "mvn jetty:stop"
+                            "stopKey" - String value that must be sent to the stopPort to validate the stop command
+                        -->
+                        <stopPort>9966</stopPort>
+                        <stopKey>shutterdown</stopKey>
+
+                        <scanIntervalSeconds>10</scanIntervalSeconds>
+
+                        <connectors>
+                            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                                <port>9090</port>
+                            </connector>
+                        </connectors>
+                    </configuration>
+
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-api</artifactId>
+                            <version>${slf4j.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <repositories>
+        <!-- EBI repo -->
+        <repository>
+            <id>nexus-ebi-repo</id>
+            <name>The EBI internal repository</name>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
+            <releases>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- EBI SNAPSHOT repo -->
+        <repository>
+            <id>nexus-ebi-repo-snapshots</id>
+            <name>The EBI internal snapshot repository</name>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>springsource-repo</id>
+            <name>SpringSource Repository</name>
+            <url>http://repo.springsource.org/release</url>
+        </repository>
+    </repositories>
+
+
+    <distributionManagement>
+        <!-- EBI repo -->
+        <repository>
+            <id>nexus-ebi-repo</id>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo</url>
+        </repository>
+        <!-- EBI SNAPSHOT repo -->
+        <snapshotRepository>
+            <id>nexus-ebi-repo-snapshots</id>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+</project>
