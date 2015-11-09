@@ -29,12 +29,10 @@
         <!-- Project defaults -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
-        <!--&lt;!&ndash; Java &ndash;&gt;-->
-        <!--<java.validation.api.version>1.0.0.GA</java.validation.api.version>-->
-        <!--<java.mail.version>1.4.4</java.mail.version>-->
+
 
         <!-- Spring -->
-        <spring.version>4.0.3.RELEASE</spring.version>
+        <spring.version>4.2.2.RELEASE</spring.version>
         <spring.security.version>3.2.4.RELEASE</spring.security.version>
         <spring.data.mongo.version>1.7.0.RELEASE</spring.data.mongo.version>
         <spring.rmqp.version>1.0.0.RELEASE</spring.rmqp.version>
@@ -55,7 +53,7 @@
         <commons.dbcp.version>1.2.2</commons.dbcp.version>
         <commons.lang.version>2.6</commons.lang.version>
         <commons.io.version>1.3.2</commons.io.version>
-        <commons.httpclient.version>3.1</commons.httpclient.version>
+        <commons.httpclient.version>4.5</commons.httpclient.version>
         <commons.fileupload.version>1.2</commons.fileupload.version>
         <java.validation.api.version>1.1.0.Final</java.validation.api.version>
 
@@ -138,38 +136,16 @@
                 <artifactId>spring-orm</artifactId>
                 <version>${spring.orm.version}</version>
             </dependency>
-            <!-- Spring Data MongoDB -->
-            <!--<dependency>-->
-                <!--<groupId>org.springframework.data</groupId>-->
-                <!--<artifactId>spring-data-mongodb</artifactId>-->
-                <!--<version>${spring.data.mongo.version}</version>-->
-            <!--</dependency>-->
-            <!--<dependency>-->
-                <!--<groupId>org.mongodb</groupId>-->
-                <!--<artifactId>mongo-java-driver</artifactId>-->
-                <!--<version>${mongo.java.driver.version}</version>-->
-                <!--<type>jar</type>-->
-            <!--</dependency>-->
 
-            <!-- Spring RabbitMQ -->
-            <dependency>
-                <groupId>org.springframework.amqp</groupId>
-                <artifactId>spring-rabbit</artifactId>
-                <version>${spring.rmqp.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-orm</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
@@ -263,8 +239,8 @@
                 <version>${commons.io.version}</version>
             </dependency>
             <dependency>
-                <groupId>commons-httpclient</groupId>
-                <artifactId>commons-httpclient</artifactId>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
                 <version>${commons.httpclient.version}</version>
             </dependency>
             <dependency>
@@ -300,31 +276,31 @@
                 <version>${aspectj.version}</version>
             </dependency>
 
-            <!-- unit test -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit-dep</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.hamcrest</groupId>
-                        <artifactId>hamcrest-core</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-library</artifactId>
-                <version>${hamcrest.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-core</artifactId>
-                <version>${hamcrest.version}</version>
-                <scope>test</scope>
-            </dependency>
+            <!--&lt;!&ndash; unit test &ndash;&gt;-->
+            <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+                <!--&lt;!&ndash;<groupId>junit</groupId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<artifactId>junit-dep</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<version>${junit.version}</version>&ndash;&gt;-->
+                <!--&lt;!&ndash;<scope>test</scope>&ndash;&gt;-->
+                <!--&lt;!&ndash;<exclusions>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<exclusion>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<groupId>org.hamcrest</groupId>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<artifactId>hamcrest-core</artifactId>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</exclusion>&ndash;&gt;-->
+                <!--&lt;!&ndash;</exclusions>&ndash;&gt;-->
+            <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>org.hamcrest</groupId>-->
+                <!--<artifactId>hamcrest-library</artifactId>-->
+                <!--<version>${hamcrest.version}</version>-->
+                <!--<scope>test</scope>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.hamcrest</groupId>-->
+                <!--<artifactId>hamcrest-core</artifactId>-->
+                <!--<version>${hamcrest.version}</version>-->
+                <!--<scope>test</scope>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
