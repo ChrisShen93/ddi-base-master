@@ -625,5 +625,25 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <profiles>
+        <profile>
+            <id>pride-local</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>public</value>
+                </property>
+            </activation>
+            <properties>
+                <ddi.mongo.db>ddiDB</ddi.mongo.db>
+                <ddi.mongo.user></ddi.mongo.user>
+                <ddi.mongo.password></ddi.mongo.password>
+                <ddi.mongo.port>27017</ddi.mongo.port>
+                <ddi.mongo.machine.one>localhost</ddi.mongo.machine.one>
+                <ddi.mongo.authenticationDatabase></ddi.mongo.authenticationDatabase>
+            </properties>
+        </profile>
+    </profiles>
+
 
 </project>
